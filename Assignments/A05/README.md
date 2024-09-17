@@ -1,4 +1,6 @@
-## Jack Leary
+## A05 - WSL : Getting it installed and set up
+### Jack Leary
+### Description:
 Proof that I have WSL installed onto my computer.
 
 #### Image: 
