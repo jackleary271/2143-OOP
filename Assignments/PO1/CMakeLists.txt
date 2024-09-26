@@ -1,4 +1,14 @@
-# Jack Leary
+# *****************************************************************************
+#
+#  Author:           Jack Leary
+#  Personal Email:   jackleary645@gmail.com
+#  School Email:     jeleary0604@my.msutexas.edu
+#  Label:            PO1
+#  Title:            Fraction Class
+#  Course:           2143 OOP
+#  Semester:         Fall 2024
+#
+#****************************************************************************/
 
 ﻿# CMakeList.txt : CMake project for Project1, include source and define
 # project specific logic here.
