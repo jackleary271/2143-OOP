@@ -8,6 +8,27 @@
 *  Course:           2143 OOP
 *  Semester:         Fall 2024
 *
+*  Description:
+*       This program performs arithmetic operations on fractions, allowing
+*       users to input numerators and denominators for two fractions to
+*       carry out addition, subtraction, multiplication, and division.
+*       The results are displayed in simplified form. Additionally, it
+*       compares fractions for equality and provides clear output for
+*       each operation, ensuring that users understand the results of their
+*       calculations.
+*
+*  Usage:
+*       - Compile the program using a C++ compiler (e.g., g++).
+*       - Run the executable in the terminal.
+*       - Follow the prompts to enter numerators and denominators for the
+*         fractions involved in each arithmetic operation.
+*       - Each operation can be performed with different fractions.
+*
+*  Files:
+*       main.cpp         : driver program for user interaction and operations
+*       Fraction.h       : header file defining the Fraction class and its methods
+*       Fraction.cpp     : implementation of the Fraction class with arithmetic
+*                          and comparison functionalities
 *****************************************************************************/
 
 #include "Fraction.h"
