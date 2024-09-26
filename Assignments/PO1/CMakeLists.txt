@@ -1,3 +1,5 @@
+# Jack Leary
+
 ﻿# CMakeList.txt : CMake project for Project1, include source and define
 # project specific logic here.
 #
