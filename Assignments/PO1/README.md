@@ -8,7 +8,7 @@ This program performs arithmetic operations on fractions, allowing users to inpu
 
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | main.cpp        | driver program for user interaction and operations |
+|   1   | [main.cpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO1/main.cpp)        | driver program for user interaction and operations |
 |   2   | [fraction.cpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO1/fraction.cpp)    | header file defining the Fraction class and its methods         |
 |   3   | [Fraction.h](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO1/Fraction.h)      | implementation of the Fraction class with arithmeticand comparison functionalities |
 |   4   | [CMakeLists.txt](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO1/CMakeLists.txt)  | adds executables for each file. |
