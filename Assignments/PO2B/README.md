@@ -1,3 +1,8 @@
+## PO2B - Knucklebones Class Outline
+### Jack Leary
+### Description:
+My class outline for the Knucklebones Project. Note that I may end up adding to this later on when I go to make the game if I have new ideas.
+
 ## 1. Dice Class
 ### Data:
 - sides: Integer (number of sides, typically 6 for this game).
