@@ -3,7 +3,7 @@
 ### Description:
 My class outline for the Knucklebones Project. Note that I may end up adding to this later on when I go to make the game if I have new ideas.
 
-### 1. Dice Class
+## 1. Dice Class
 #### Data:
 - sides: Integer (number of sides, typically 6 for this game).
 - current_value: Integer (value of the rolled die, ranging from 1 to 6).
@@ -13,7 +13,7 @@ My class outline for the Knucklebones Project. Note that I may end up adding to 
 #### Relationships:
 - Composition: A Player HAS-A Dice. Dice will be used by the Player to roll during the game. 
  
-### 2. Player Class
+## 2. Player Class
 #### Data:
 - name: String (player’s name).
 - userid: String (player's username/handle).
@@ -33,7 +33,7 @@ My class outline for the Knucklebones Project. Note that I may end up adding to 
 - Composition: A Player HAS-A Dice.
 - A Player participates in the game and interacts with the grid (which represents their board).
 
-### 3. Game Class
+## 3. Game Class
 #### Data:
 - players: List of Player objects.
 - current_round: Integer (tracks the current round of play).
@@ -44,7 +44,7 @@ My class outline for the Knucklebones Project. Note that I may end up adding to 
 #### Relationships:
 - A Game has players and manages them.
 
-### 4. Knucklebones Game Class (inherits from Game)
+## 4. Knucklebones Game Class (inherits from Game)
 #### Data:
 - players: List of Player objects (2 players in this game).
 - current_round: Integer (keeps track of the number of rounds).
