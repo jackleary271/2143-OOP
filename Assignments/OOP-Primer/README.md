@@ -26,6 +26,7 @@
 ## 6. Classes and Objects
 - **Class**: A blueprint for creating objects, defining their attributes and behaviors.
 - **Object**: An instance of a class, representing a specific entity.
+https://camo.githubusercontent.com/44df9c742e5bb9b92f059050abf0347b214b576666df712801f67288acb32587/68747470733a2f2f6473303535757a6574616f62622e636c6f756466726f6e742e6e65742f696d6167655f6f7074696d697a65722f373232633832616666303735613134333133626537666137343633663766656461643135316130612e706e67
 
 ## 7. Collections and Iterators
 - **Collections**: Data structures like arrays, lists, sets, and maps used to store groups of objects.
