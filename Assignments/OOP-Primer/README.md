@@ -6,7 +6,7 @@
 
 ## 1. Abstract Classes and Interfaces
 - **Abstract Classes**: Classes that cannot be instantiated directly and are used to define a common base class with abstract methods that must be implemented in derived classes.
-  <img src="https://github.com/user-attachments/assets/67d164ac-6e12-42d7-98d6-829cb5f3f552" width=250>
+  <img src="https://github.com/user-attachments/assets/67d164ac-6e12-42d7-98d6-829cb5f3f552" width=400>
 
 - **Interfaces**: Contracts that define a set of methods that implementing classes must provide. Unlike abstract classes, interfaces do not contain implementation details.
 
