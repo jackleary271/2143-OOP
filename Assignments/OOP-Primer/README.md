@@ -1,8 +1,8 @@
 # A04
 
-- Name: Jack Leary
-- Date: 12/06/2024
-- Class: 2143 OOP
+### Jack Leary
+### 12/06/2024
+### 2143 OOP
 
 ## 1. Abstract Classes and Interfaces
 - **Abstract Classes**: Classes that cannot be instantiated directly and are used to define a common base class with abstract methods that must be implemented in derived classes.
