@@ -22,50 +22,49 @@
 - **Private**: Members are accessible only within the same class.
 - **Protected**: Members are accessible within the same class and by derived classes.
 
-- #include <iostream>
-using namespace std;
+      #include <iostream>
+      using namespace std;
 
-class Base {
-private:
-    int privateVar = 1; // Only accessible within this class
-
-protected:
-    int protectedVar = 2; // Accessible within this class and derived classes
-
-public:
-    int publicVar = 3; // Accessible from anywhere
-
-    void showMembers() {
-        cout << "Private: " << privateVar << ", Protected: " << protectedVar 
-             << ", Public: " << publicVar << endl;
-    }
-};
-
-class Derived : public Base {
-public:
-    void accessBaseMembers() {
-        // privateVar = 10; // Error: privateVar is not accessible
-        protectedVar = 20; // Accessible because it's protected
-        publicVar = 30;    // Accessible because it's public
-    }
-};
-
-int main() {
-    Base base;
-    base.publicVar = 5; // Allowed
-    // base.protectedVar = 15; // Error: protectedVar is not accessible here
-    // base.privateVar = 10;   // Error: privateVar is not accessible here
-
-    base.showMembers(); // Accesses all members within the Base class
-
-    Derived derived;
-    derived.accessBaseMembers();
-    derived.publicVar = 50; // Allowed
-    // derived.protectedVar = 25; // Error: protectedVar is not accessible directly
-    derived.showMembers();
-
-    return 0;
-}
+      class Base {
+      private:
+        int privateVar = 1; // Only accessible within this class
+    
+      protected:
+          int protectedVar = 2; // Accessible within this class and derived classes
+  
+      public:
+          int publicVar = 3; // Accessible from anywhere
+  
+      void showMembers() {
+          cout << "Private: " << privateVar << ", Protected: " << protectedVar 
+               << ", Public: " << publicVar << endl;
+      }
+  
+      class Derived : public Base {
+      public:
+      void accessBaseMembers() {
+          privateVar = 10;   // Error: privateVar is not accessible
+          protectedVar = 20; // Accessible because it's protected
+          publicVar = 30;    // Accessible because it's public
+      }
+      };
+  
+      int main() {
+          Base base;
+          base.publicVar = 5; // Allowed
+          // base.protectedVar = 15; // Error: protectedVar is not accessible here
+          // base.privateVar = 10;   // Error: privateVar is not accessible here
+    
+        base.showMembers(); // Accesses all members within the Base class
+    
+        Derived derived;
+        derived.accessBaseMembers();
+        derived.publicVar = 50; // Allowed
+        // derived.protectedVar = 25; // Error: protectedVar is not accessible directly
+        derived.showMembers();
+    
+        return 0;
+        }
 
 
 ## 4. Attributes / Properties
