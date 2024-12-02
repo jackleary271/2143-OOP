@@ -7,8 +7,30 @@
 ## 1. Abstract Classes and Interfaces
 - **Abstract Classes**: Classes that cannot be instantiated directly and are used to define a common base class with abstract methods that must be implemented in derived classes.
 
-  ![image](https://github.com/user-attachments/assets/5161fb06-35aa-4d42-ab61-f46f41b985a4)
-
+      #include <iostream>
+      using namespace std;
+      
+      // Abstract class
+      class Shape {
+      public:
+          virtual void draw() const = 0; // Pure virtual function
+          virtual ~Shape() {}           // Virtual destructor
+      };
+      
+      // Derived class
+      class Circle : public Shape {
+      public:
+          void draw() const override {
+              cout << "Drawing a Circle" << endl;
+          }
+      };
+      
+      int main() {
+          Shape* circle = new Circle();
+          circle->draw(); // Output: Drawing a Circle
+          delete circle;
+          return 0;
+      }
 
 - **Interfaces**: Contracts that define a set of methods that implementing classes must provide. Unlike abstract classes, interfaces do not contain implementation details.
 
