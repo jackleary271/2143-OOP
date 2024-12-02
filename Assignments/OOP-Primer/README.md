@@ -126,6 +126,33 @@
 - **Collections**: Data structures like arrays, lists, sets, and maps used to store groups of objects.
 - **Iterators**: Objects that enable sequential traversal of elements in a collection.
 
+      #include <iostream>
+      #include <vector>
+      using namespace std;
+      
+      int main() {
+          // Collection: vector (dynamic array)
+          vector<int> numbers = {10, 20, 30, 40, 50};
+      
+          // Iterator for traversing the vector
+          vector<int>::iterator it;
+      
+          cout << "Elements in the vector:" << endl;
+          for (it = numbers.begin(); it != numbers.end(); ++it) {
+              cout << *it << " "; // Dereferencing iterator to access the value
+          }
+          cout << endl;
+      
+          // Using a range-based loop (modern alternative to iterators)
+          cout << "Using range-based loop:" << endl;
+          for (int num : numbers) {
+              cout << num << " ";
+          }
+          cout << endl;
+      
+          return 0;
+      }
+
 ## 8. Composition
 - A "has-a" relationship where one class contains an object of another class as a member.
 
