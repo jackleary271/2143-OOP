@@ -12,7 +12,7 @@
 
 - **Interfaces**: Contracts that define a set of methods that implementing classes must provide. Unlike abstract classes, interfaces do not contain implementation details.
 
-  <img src="https://github.com/user-attachments/assets/f6312bfc-ce9b-440f-b69a-d9eb50f64e6f" width=500>
+  <img src="https://github.com/user-attachments/assets/f6312bfc-ce9b-440f-b69a-d9eb50f64e6f" width=400>
 
 ## 2. Abstraction
 - The process of hiding implementation details and showing only essential features of an object. It focuses on "what" an object does rather than "how" it does it.
