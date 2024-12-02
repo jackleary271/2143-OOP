@@ -93,6 +93,9 @@
 - **Attributes**: Characteristics or data stored within an object, typically represented as variables.
 - **Properties**: A special type of attribute with getters and setters for controlled access.
 
+![image](https://github.com/user-attachments/assets/8f0938c6-ec7e-4dc8-b834-e3c758ce8c98)
+
+
 ## 5. Class Variable
 - A variable that is shared among all instances of a class, declared with the `static` keyword in many languages.
 
