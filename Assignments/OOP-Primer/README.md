@@ -159,10 +159,50 @@
 
 <img src="https://github.com/user-attachments/assets/58c76530-a2e5-40f9-85cf-5efb53f0be25" width=450>
 
-
 ## 9. Constructors and Destructors
 - **Constructors**: Special methods that initialize an object when it is created.
 - **Destructors**: Methods called when an object is destroyed to release resources.
+
+      #include <iostream>
+      using namespace std;
+      
+      class Car {
+      private:
+          string model;
+          int year;
+      
+      public:
+          // Constructor
+          Car(string m, int y) {
+              model = m;
+              year = y;
+              cout << "Car object created: " << model << " (" << year << ")" << endl;
+          }
+      
+          // Destructor
+          ~Car() {
+              cout << "Car object destroyed: " << model << " (" << year << ")" << endl;
+          }
+      
+          // Member function to display car info
+          void displayInfo() {
+              cout << "Model: " << model << ", Year: " << year << endl;
+          }
+      };
+      
+      int main() {
+          // Creating objects using the constructor
+          Car car1("Toyota", 2020);  // Constructor called
+          car1.displayInfo();
+      
+          {
+              Car car2("Honda", 2022);  // Constructor called for car2
+              car2.displayInfo();
+          } // car2 goes out of scope and destructor is called here
+      
+          return 0;  // car1 goes out of scope and its destructor is called here
+      }
+
 
 ## 10. Design Patterns
 - **Singleton**: Ensures a class has only one instance and provides a global point of access to it.
