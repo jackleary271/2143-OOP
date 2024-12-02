@@ -157,6 +157,9 @@
 - Composition "has-a" class containing an object of another class as a member.
 - Inheritance "is-a" mechanism where a class (child) derives properties and behaviors from another class (parent).
 
+<img src="https://github.com/user-attachments/assets/58c76530-a2e5-40f9-85cf-5efb53f0be25" width=400>
+
+
 ## 9. Constructors and Destructors
 - **Constructors**: Special methods that initialize an object when it is created.
 - **Destructors**: Methods called when an object is destroyed to release resources.
