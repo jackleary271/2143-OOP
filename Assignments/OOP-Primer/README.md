@@ -153,8 +153,9 @@
           return 0;
       }
 
-## 8. Composition
-- A "has-a" relationship where one class contains an object of another class as a member.
+## 8. Composition vs Inheritance
+- Composition "has-a" class containing an object of another class as a member.
+- Inheritance "is-a" mechanism where a class (child) derives properties and behaviors from another class (parent).
 
 ## 9. Constructors and Destructors
 - **Constructors**: Special methods that initialize an object when it is created.
@@ -181,64 +182,61 @@
 - **Generics**: Allow classes and methods to operate on types specified at runtime (e.g., Java Generics).
 - **Templates**: Similar to generics but used at compile time (e.g., C++ Templates).
 
-## 16. Inheritance
-- A mechanism where a class (child) derives properties and behaviors from another class (parent).
-
-## 17. Instance Variable
+## 16. Instance Variable
 - A variable tied to a specific instance of a class, holding unique values for each object.
 
-## 18. Member Variable
+## 17. Member Variable
 - Variables defined within a class and can be either instance or class variables.
 
-## 19. Memory Management (Garbage Collection, Pointers)
+## 18. Memory Management (Garbage Collection, Pointers)
 - **Garbage Collection**: Automatic memory management that reclaims unused objects.
 - **Pointers**: Variables that store memory addresses (commonly used in C++).
 
-## 20. Method Overloading
+## 19. Method Overloading
 - Defining multiple methods in the same class with the same name but different parameters.
 
-## 21. Method
+## 20. Method
 - A function defined within a class that operates on the class's data.
 
-## 22. Multiple Inheritance
+## 21. Multiple Inheritance
 - A class inheriting from more than one parent class, which can lead to complexity (e.g., the "diamond problem").
 
-## 23. Multithreading in OOP
+## 22. Multithreading in OOP
 - Using threads to execute multiple tasks concurrently, often handled with OOP principles for better modularity and synchronization.
 
-## 24. Object Relationships (Association, Aggregation, Composition)
+## 23. Object Relationships (Association, Aggregation, Composition)
 - **Association**: A general relationship between objects.
 - **Aggregation**: A "has-a" relationship where contained objects can exist independently.
 - **Composition**: A stronger "has-a" relationship where contained objects depend on the container.
 
-## 25. Object-Oriented Design Principles
+## 24. Object-Oriented Design Principles
 - Guidelines like SOLID, DRY, and KISS that promote good design practices.
 
-## 26. Operator Overloading
+## 25. Operator Overloading
 - Redefining the behavior of operators for user-defined types.
 
-## 27. Overloading
+## 26. Overloading
 - Providing multiple methods with the same name but different parameters or types.
 
-## 28. Polymorphism
+## 27. Polymorphism
 - The ability to process objects differently based on their data type or class, commonly achieved through method overriding and overloading.
 
-## 29. Public / Private / Protected
+## 28. Public / Private / Protected
 - Refer to **Access Modifiers**.
 
-## 30. SOLID Principles
+## 29. SOLID Principles
 - **S**ingle Responsibility, **O**pen/Closed, **L**iskov Substitution, **I**nterface Segregation, **D**ependency Inversion: Principles for maintainable OOP design.
 
-## 31. Static (Methods and Variables)
+## 30. Static (Methods and Variables)
 - **Static Variables**: Shared among all class instances.
 - **Static Methods**: Methods that belong to the class rather than any instance.
 
-## 32. Testing in OOP
+## 31. Testing in OOP
 - **Unit Testing**: Testing individual components of code.
 - **Test-Driven Development**: Writing tests before implementing functionality.
 
-## 33. UML Diagrams and Modeling
+## 32. UML Diagrams and Modeling
 - Unified Modeling Language diagrams like class, sequence, and activity diagrams to design and visualize OOP systems.
 
-## 34. Virtual
+## 33. Virtual
 - A keyword in languages like C++ to enable method overriding in derived classes, supporting runtime polymorphism.
