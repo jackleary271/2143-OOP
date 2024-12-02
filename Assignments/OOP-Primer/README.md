@@ -34,7 +34,7 @@
 
 - **Interfaces**: Contracts that define a set of methods that implementing classes must provide. Unlike abstract classes, interfaces do not contain implementation details.
 
-  <img src="https://github.com/user-attachments/assets/8f0938c6-ec7e-4dc8-b834-e3c758ce8c98" width=350>
+  <img src="https://github.com/user-attachments/assets/91487bc8-a300-4e8b-b3e8-86e37dc3e20b" width=350>
 
 ## 2. Abstraction
 - The process of hiding implementation details and showing only essential features of an object. It focuses on "what" an object does rather than "how" it does it.
@@ -93,11 +93,29 @@
 - **Attributes**: Characteristics or data stored within an object, typically represented as variables.
 - **Properties**: A special type of attribute with getters and setters for controlled access.
 
-  <img src="https://github.com/user-attachments/assets/8f0938c6-ec7e-4dc8-b834-e3c758ce8c98" width=350>
+  <img src="https://github.com/user-attachments/assets/8f0938c6-ec7e-4dc8-b834-e3c758ce8c98" width=450>
 
 
 ## 5. Class Variable
 - A variable that is shared among all instances of a class, declared with the `static` keyword in many languages.
+
+      class Counter {
+      private:
+          static int count; // Class variable (shared by all instances)
+      
+      public:
+          Counter() {
+              count++;
+          }
+
+          ~Counter() {
+              count--;
+          }
+      
+          static int getCount() { // Static member function to access class variable
+              return count;
+          }
+      };
 
 ## 6. Classes and Objects
 - **Class**: A blueprint for creating objects, defining their attributes and behaviors.
