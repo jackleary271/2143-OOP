@@ -26,7 +26,7 @@
 ## 6. Classes and Objects
 - **Class**: A blueprint for creating objects, defining their attributes and behaviors.
 - **Object**: An instance of a class, representing a specific entity.
-><img src="https://ds055uzetaobb.cloudfront.net/image_optimizer/722c82aff075a14313be7fa7463f7fedad151a0a.png" width=250>
+<img src="https://ds055uzetaobb.cloudfront.net/image_optimizer/722c82aff075a14313be7fa7463f7fedad151a0a.png" width=250>
 
 ## 7. Collections and Iterators
 - **Collections**: Data structures like arrays, lists, sets, and maps used to store groups of objects.
