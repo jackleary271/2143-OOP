@@ -984,10 +984,7 @@ The ability to process objects differently based on their data type or class, co
           return 0;
       }
 
-## 28. Public / Private / Protected
-- Refer to **Access Modifiers**.
-
-## 29. SOLID Principles
+## 28. SOLID Principles
 Principles for maintainable OOP design.
 - **S**ingle Responsibility
 - **O**pen/Closed
@@ -995,16 +992,16 @@ Principles for maintainable OOP design.
 - **I**nterface Segregation
 - **D**ependency Inversion
 
-## 30. Static (Methods and Variables)
+## 29. Static (Methods and Variables)
 - **Static Variables**: Shared among all class instances.
 - **Static Methods**: Methods that belong to the class rather than any instance.
 
-## 31. Testing in OOP
+## 30. Testing in OOP
 - **Unit Testing**: Testing individual components of code.
 - **Test-Driven Development**: Writing tests before implementing functionality.
 
-## 32. UML Diagrams and Modeling
+## 31. UML Diagrams and Modeling
 - Unified Modeling Language diagrams like class, sequence, and activity diagrams to design and visualize OOP systems.
 
-## 33. Virtual
+## 32. Virtual
 - A keyword in languages like C++ to enable method overriding in derived classes, supporting runtime polymorphism.
