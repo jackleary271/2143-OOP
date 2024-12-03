@@ -721,13 +721,162 @@
 ## 22. Multithreading in OOP
 - Using threads to execute multiple tasks concurrently, often handled with OOP principles for better modularity and synchronization.
 
+      #include <iostream>
+      #include <thread>
+      
+      // Function that will be run on a separate thread
+      void printHello() {
+          std::cout << "Hello from the thread!" << std::endl;
+      }
+      
+      // Another function for multithreading
+      void printGoodbye() {
+          std::cout << "Goodbye from the thread!" << std::endl;
+      }
+      
+      int main() {
+          // Create two threads
+          std::thread thread1(printHello);  // Thread for printHello
+          std::thread thread2(printGoodbye); // Thread for printGoodbye
+      
+          // Wait for both threads to finish before continuing
+          thread1.join(); // Ensures the main thread waits for thread1 to finish
+          thread2.join(); // Ensures the main thread waits for thread2 to finish
+      
+          std::cout << "Main thread is finished!" << std::endl;
+      
+          return 0;
+      }
+
 ## 23. Object Relationships (Association, Aggregation, Composition)
 - **Association**: A general relationship between objects.
+
+      #include <iostream>
+      #include <vector>
+      using namespace std;
+      
+      // Student class
+      class Student {
+      public:
+          void study() {
+              cout << "Student is studying." << endl;
+          }
+      };
+      
+      // Teacher class
+      class Teacher {
+      public:
+          void teach() {
+              cout << "Teacher is teaching." << endl;
+          }
+      
+          void interactWithStudent(Student& student) {
+              student.study();  // Interaction between Teacher and Student (association)
+          }
+      };
+      
+      int main() {
+          Student student;
+          Teacher teacher;
+      
+          teacher.teach();
+          teacher.interactWithStudent(student);
+      
+          return 0;
+      }
+
 - **Aggregation**: A "has-a" relationship where contained objects can exist independently.
+
+      #include <iostream>
+      #include <vector>
+      using namespace std;
+      
+      // Professor class
+      class Professor {
+      public:
+          void teach() {
+              cout << "Professor is teaching." << endl;
+          }
+      };
+      
+      // Department class (aggregates Professors)
+      class Department {
+      private:
+          vector<Professor*> professors;  // Professors belong to a department (aggregation)
+      
+      public:
+          void addProfessor(Professor* professor) {
+              professors.push_back(professor);
+          }
+      
+          void showProfessors() {
+              cout << "Professors in the department: " << endl;
+              for (auto professor : professors) {
+                  professor->teach();
+              }
+          }
+      };
+      
+      int main() {
+          Professor prof1, prof2;
+          Department dept;
+      
+          dept.addProfessor(&prof1);
+          dept.addProfessor(&prof2);
+          
+          dept.showProfessors();
+      
+          return 0;
+      }
+
 - **Composition**: A stronger "has-a" relationship where contained objects depend on the container.
 
+      #include <iostream>
+      using namespace std;
+      
+      // Room class
+      class Room {
+      public:
+          Room() {
+              cout << "Room created." << endl;
+          }
+          ~Room() {
+              cout << "Room destroyed." << endl;
+          }
+      
+          void describe() {
+              cout << "This is a room." << endl;
+          }
+      };
+      
+      // House class (composed of Rooms)
+      class House {
+      private:
+          Room room;  // House "owns" the Room (composition)
+      
+      public:
+          void showRoom() {
+              room.describe();
+          }
+      };
+      
+      int main() {
+          House house;
+          house.showRoom();  // Display room description
+      
+          // The Room object is destroyed when the House object goes out of scope
+          return 0;
+      }
+
 ## 24. Object-Oriented Design Principles
-- Guidelines like SOLID, DRY, and KISS that promote good design practices.
+- Encapsulation
+- Abstraction
+- Polymorphism
+- Inheritance
+- Composition
+- SOLID Principles
+- Keep It Simple Stupid (KISS)
+- Don't Repeat Yourself (DRY)
 
 ## 25. Operator Overloading
 - Redefining the behavior of operators for user-defined types.
