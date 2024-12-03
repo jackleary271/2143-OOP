@@ -919,7 +919,70 @@
 - Providing multiple methods with the same name but different parameters or types.
 
 ## 27. Polymorphism
-- The ability to process objects differently based on their data type or class, commonly achieved through method overriding and overloading.
+The ability to process objects differently based on their data type or class, commonly achieved through method overriding and overloading.
+- Compile Time Polymorphism:
+
+      #include <iostream>
+      using namespace std;
+      
+      // Function overloading: Same function name, different parameters
+      void display(int i) {
+          cout << "Integer: " << i << endl;
+      }
+      
+      void display(double d) {
+          cout << "Double: " << d << endl;
+      }
+      
+      int main() {
+          display(10);    // Calls the integer version
+          display(5.5);   // Calls the double version
+          return 0;
+      }
+
+- Runtime Polymorphism:
+
+      #include <iostream>
+      using namespace std;
+      
+      // Base class
+      class Shape {
+      public:
+          virtual void draw() {  // Virtual function
+              cout << "Drawing a Shape" << endl;
+          }
+      };
+      
+      // Derived class 1
+      class Circle : public Shape {
+      public:
+          void draw() override {  // Override base class function
+              cout << "Drawing a Circle" << endl;
+          }
+      };
+      
+      // Derived class 2
+      class Rectangle : public Shape {
+      public:
+          void draw() override {  // Override base class function
+              cout << "Drawing a Rectangle" << endl;
+          }
+      };
+      
+      int main() {
+          Shape* shapePtr;
+          Circle circle;
+          Rectangle rectangle;
+      
+          // Using the base class pointer to refer to derived class objects
+          shapePtr = &circle;
+          shapePtr->draw();  // Calls Circle's draw()
+      
+          shapePtr = &rectangle;
+          shapePtr->draw();  // Calls Rectangle's draw()
+      
+          return 0;
+      }
 
 ## 28. Public / Private / Protected
 - Refer to **Access Modifiers**.
