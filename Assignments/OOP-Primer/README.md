@@ -360,12 +360,92 @@
 
 ![image](https://github.com/user-attachments/assets/efa85c79-ac83-4989-86e5-9e92fec5bb36)
 
-
 ## 12. Exception Handling
 - Mechanisms for handling runtime errors, typically using constructs like `try`, `catch`, and `finally`.
 
+      #include <iostream>
+      
+      double divide(double numerator, double denominator) {
+          if (denominator == 0) {
+              throw std::runtime_error("Division by zero!");
+          }
+          return numerator / denominator;
+      }
+      
+      int main() {
+          try {
+              double result = divide(10, 0);  // Will throw an exception
+              std::cout << "Result: " << result << std::endl;
+          } catch (const std::runtime_error& e) {
+              std::cout << "Caught exception: " << e.what() << std::endl;
+          }
+      
+          return 0;
+      }
+
 ## 13. File I/O in OOP
 - File operations (read/write) managed using object-oriented concepts, often encapsulated in classes for better modularity and error handling.
+
+      #include <iostream>
+      #include <fstream>
+      #include <string>
+      
+      class FileHandler {
+      private:
+          std::string fileName;
+          std::fstream fileStream;
+      
+      public:
+          // Constructor to set file name
+          explicit FileHandler(const std::string& name) : fileName(name) {}
+      
+          // Method to write data to the file
+          void write(const std::string& data) {
+              fileStream.open(fileName, std::ios::out | std::ios::app); // Open in append mode
+              if (!fileStream) {
+                  throw std::ios_base::failure("Failed to open file for writing.");
+              }
+              fileStream << data << "\n";
+              fileStream.close();
+          }
+      
+          // Method to read data from the file
+          void read() {
+              fileStream.open(fileName, std::ios::in); // Open in read mode
+              if (!fileStream) {
+                  throw std::ios_base::failure("Failed to open file for reading.");
+              }
+      
+              std::string line;
+              while (std::getline(fileStream, line)) {
+                  std::cout << line << std::endl;
+              }
+              fileStream.close();
+          }
+      
+          // Destructor to ensure file is closed
+          ~FileHandler() {
+              if (fileStream.is_open()) {
+                  fileStream.close();
+              }
+          }
+      };
+      
+      int main() {
+          try {
+              FileHandler file("example.txt");
+      
+              file.write("Hello, World!");
+              file.write("This is a sample file.");
+              
+              std::cout << "File Contents:" << std::endl;
+              file.read();
+          } catch (const std::exception& e) {
+              std::cerr << "Error: " << e.what() << std::endl;
+          }
+      
+          return 0;
+      }
 
 ## 14. Friends
 - A concept in some languages (e.g., C++) where a class or function is declared as a "friend" to access private/protected members of another class.
