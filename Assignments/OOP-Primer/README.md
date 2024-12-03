@@ -206,8 +206,154 @@
 
 ## 10. Design Patterns
 - **Singleton**: Ensures a class has only one instance and provides a global point of access to it.
+
+      #include <iostream>
+      #include <mutex>
+      
+      class Singleton {
+      private:
+          static Singleton* instance;
+          static std::mutex mutex_;
+      
+          // Private constructor to prevent instantiation
+          Singleton() {}
+      
+      public:
+          // Delete copy constructor and assignment operator
+          Singleton(const Singleton&) = delete;
+          Singleton& operator=(const Singleton&) = delete;
+      
+          static Singleton* getInstance() {
+              std::lock_guard<std::mutex> lock(mutex_);
+              if (instance == nullptr) {
+                  instance = new Singleton();
+              }
+              return instance;
+          }
+      
+          void showMessage() {
+              std::cout << "Singleton instance accessed!\n";
+          }
+      };
+      
+      // Initialize static members
+      Singleton* Singleton::instance = nullptr;
+      std::mutex Singleton::mutex_;
+      
+      int main() {
+          Singleton* singleton = Singleton::getInstance();
+          singleton->showMessage();
+          return 0;
+      }
+
 - **Factory**: Provides an interface for creating objects without specifying their exact class.
+
+      #include <iostream>
+      #include <memory>
+      
+      // Product interface
+      class Product {
+      public:
+          virtual void operation() const = 0;
+          virtual ~Product() = default;
+      };
+      
+      // Concrete products
+      class ConcreteProductA : public Product {
+      public:
+          void operation() const override {
+              std::cout << "Operation from ConcreteProductA\n";
+          }
+      };
+      
+      class ConcreteProductB : public Product {
+      public:
+          void operation() const override {
+              std::cout << "Operation from ConcreteProductB\n";
+          }
+      };
+      
+      // Factory class
+      class Factory {
+      public:
+          static std::unique_ptr<Product> createProduct(const std::string& type) {
+              if (type == "A") {
+                  return std::make_unique<ConcreteProductA>();
+              } else if (type == "B") {
+                  return std::make_unique<ConcreteProductB>();
+              }
+              return nullptr;
+          }
+      };
+      
+      int main() {
+          auto productA = Factory::createProduct("A");
+          auto productB = Factory::createProduct("B");
+      
+          if (productA) productA->operation();
+          if (productB) productB->operation();
+      
+          return 0;
+      }
+
 - **Observer**: Defines a one-to-many dependency, where changes in one object notify all dependent objects.
+
+      #include <iostream>
+      #include <vector>
+      #include <memory>
+      
+      // Subject (Observable)
+      class Subject {
+          std::vector<class Observer*> observers;
+      
+      public:
+          void attach(Observer* observer) {
+              observers.push_back(observer);
+          }
+      
+          void notify() {
+              for (Observer* observer : observers) {
+                  observer->update();
+              }
+          }
+      };
+      
+      // Observer
+      class Observer {
+      public:
+          virtual void update() = 0;
+          virtual ~Observer() = default;
+      };
+      
+      // Concrete Observers
+      class ConcreteObserverA : public Observer {
+      public:
+          void update() override {
+              std::cout << "ConcreteObserverA notified!\n";
+          }
+      };
+      
+      class ConcreteObserverB : public Observer {
+      public:
+          void update() override {
+              std::cout << "ConcreteObserverB notified!\n";
+          }
+      };
+      
+      int main() {
+          Subject subject;
+      
+          ConcreteObserverA observerA;
+          ConcreteObserverB observerB;
+      
+          subject.attach(&observerA);
+          subject.attach(&observerB);
+      
+          std::cout << "Notifying observers...\n";
+          subject.notify();
+      
+          return 0;
+      }
 
 ## 11. Encapsulation
 - Bundling data (attributes) and methods that operate on the data into a single unit (class) and restricting direct access to them.
