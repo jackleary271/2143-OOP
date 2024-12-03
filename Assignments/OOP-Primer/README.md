@@ -450,6 +450,34 @@
 ## 14. Friends
 - A concept in some languages (e.g., C++) where a class or function is declared as a "friend" to access private/protected members of another class.
 
+      #include <iostream>
+      
+      class Number {
+      private:
+          int value;
+      
+      public:
+          // Constructor
+          explicit Number(int v) : value(v) {}
+      
+          // Declaring friend function
+          friend int add(const Number& num1, const Number& num2);
+      };
+      
+      // Definition of the friend function
+      int add(const Number& num1, const Number& num2) {
+          return num1.value + num2.value; // Accessing private members
+      }
+      
+      int main() {
+          Number n1(10);
+          Number n2(20);
+      
+          std::cout << "Sum: " << add(n1, n2) << std::endl;
+      
+          return 0;
+      }
+
 ## 15. Generics and Templates
 - **Generics**: Allow classes and methods to operate on types specified at runtime (e.g., Java Generics).
 - **Templates**: Similar to generics but used at compile time (e.g., C++ Templates).
