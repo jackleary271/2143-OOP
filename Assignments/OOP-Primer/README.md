@@ -358,6 +358,9 @@
 ## 11. Encapsulation
 - Bundling data (attributes) and methods that operate on the data into a single unit (class) and restricting direct access to them.
 
+![image](https://github.com/user-attachments/assets/efa85c79-ac83-4989-86e5-9e92fec5bb36)
+
+
 ## 12. Exception Handling
 - Mechanisms for handling runtime errors, typically using constructs like `try`, `catch`, and `finally`.
 
