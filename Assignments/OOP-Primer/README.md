@@ -986,11 +986,215 @@ The ability to process objects differently based on their data type or class, co
 
 ## 28. SOLID Principles
 Principles for maintainable OOP design.
-- **S**ingle Responsibility
-- **O**pen/Closed
-- **L**iskov Substitution
-- **I**nterface Segregation
-- **D**ependency Inversion
+**S**ingle Responsibility
+**O**pen/Closed
+**L**iskov Substitution
+**I**nterface Segregation
+**D**ependency Inversion
+
+- Single Responsibility: A class should have only one reason to change, meaning it should have only one responsibility or task. This makes a class easier to understand and maintain because it only deals with one specific functionality.
+
+      #include <iostream>
+      #include <string>
+      
+      class Employee {
+      private:
+          std::string name;
+          int age;
+      public:
+          Employee(std::string n, int a) : name(n), age(a) {}
+      
+          void printEmployeeDetails() {
+              std::cout << "Employee Name: " << name << ", Age: " << age << std::endl;
+          }
+      };
+      
+      class EmployeeDatabase {
+      public:
+          void saveEmployee(const Employee& employee) {
+              // Code to save employee to a database
+              std::cout << "Saving employee to database." << std::endl;
+          }
+      };
+      
+      int main() {
+          Employee emp("John", 30);
+          EmployeeDatabase db;
+          db.saveEmployee(emp);
+          emp.printEmployeeDetails();
+          
+          return 0;
+      }
+  
+- Open/Closed: A class should be open for extension but closed for modification. This means you should be able to add new functionality to a class without changing its existing code.
+
+      #include <iostream>
+      
+      class Shape {
+      public:
+          virtual double area() const = 0; // Pure virtual function
+          virtual ~Shape() {}
+      };
+      
+      class Circle : public Shape {
+      private:
+          double radius;
+      public:
+          Circle(double r) : radius(r) {}
+          double area() const override {
+              return 3.1415 * radius * radius;
+          }
+      };
+      
+      class Rectangle : public Shape {
+      private:
+          double length, width;
+      public:
+          Rectangle(double l, double w) : length(l), width(w) {}
+          double area() const override {
+              return length * width;
+          }
+      };
+      
+      class AreaCalculator {
+      public:
+          double calculateArea(const Shape& shape) {
+              return shape.area();
+          }
+      };
+      
+      int main() {
+          Circle circle(5);
+          Rectangle rectangle(4, 6);
+      
+          AreaCalculator calculator;
+          std::cout << "Area of Circle: " << calculator.calculateArea(circle) << std::endl;
+          std::cout << "Area of Rectangle: " << calculator.calculateArea(rectangle) << std::endl;
+          
+          return 0;
+      }
+
+- Liskov Substitution: Objects of a derived class should be replaceable by objects of the base class without affecting the correctness of the program. In other words, a derived class should not override base class functionality in a way that breaks the functionality expected by the client code.
+
+      #include <iostream>
+      
+      class Bird {
+      public:
+          virtual void fly() const {
+              std::cout << "Bird is flying." << std::endl;
+          }
+      };
+      
+      class Sparrow : public Bird {
+      public:
+          void fly() const override {
+              std::cout << "Sparrow is flying." << std::endl;
+          }
+      };
+      
+      class Ostrich : public Bird {
+      public:
+          // Violates LSP, Ostrich can't fly
+          void fly() const override {
+              // Ostrich doesn't fly, should not override fly in this way
+              std::cout << "Ostrich cannot fly." << std::endl;
+          }
+      };
+      
+      int main() {
+          Bird* bird = new Sparrow();
+          bird->fly();  // Works as expected
+      
+          bird = new Ostrich();
+          bird->fly();  // Wrong behavior, Ostrich cannot fly
+          
+          return 0;
+      }
+
+- Interface Segregation: Clients should not be forced to depend on interfaces they do not use. In other words, it's better to have many small, specific interfaces than one large, general-purpose interface.
+
+      #include <iostream>
+      
+      class Printer {
+      public:
+          virtual void print() = 0;
+      };
+      
+      class Scanner {
+      public:
+          virtual void scan() = 0;
+      };
+      
+      class MultiFunctionDevice : public Printer, public Scanner {
+      public:
+          void print() override {
+              std::cout << "Printing document." << std::endl;
+          }
+          
+          void scan() override {
+              std::cout << "Scanning document." << std::endl;
+          }
+      };
+      
+      int main() {
+          MultiFunctionDevice mfd;
+          mfd.print();
+          mfd.scan();
+          
+          return 0;
+      }
+
+- Dependency Inversion: High-level modules should not depend on low-level modules. Both should depend on abstractions. Furthermore, abstractions should not depend on details; details should depend on abstractions.
+
+      #include <iostream>
+      #include <memory>
+      
+      // Abstract class
+      class MessageSender {
+      public:
+          virtual void sendMessage(const std::string& message) = 0;
+      };
+      
+      class EmailSender : public MessageSender {
+      public:
+          void sendMessage(const std::string& message) override {
+              std::cout << "Sending Email: " << message << std::endl;
+          }
+      };
+      
+      class SMSender : public MessageSender {
+      public:
+          void sendMessage(const std::string& message) override {
+              std::cout << "Sending SMS: " << message << std::endl;
+          }
+      };
+      
+      class NotificationService {
+      private:
+          std::shared_ptr<MessageSender> sender;  // Dependency injected
+      
+      public:
+          NotificationService(std::shared_ptr<MessageSender> messageSender)
+              : sender(messageSender) {}
+      
+          void notify(const std::string& message) {
+              sender->sendMessage(message);
+          }
+      };
+      
+      int main() {
+          // Using dependency injection to pass the dependency
+          std::shared_ptr<MessageSender> emailSender = std::make_shared<EmailSender>();
+          NotificationService service(emailSender);
+          service.notify("Hello, World!");
+      
+          // Switch dependency to SMSender
+          std::shared_ptr<MessageSender> smsSender = std::make_shared<SMSender>();
+          NotificationService serviceSMS(smsSender);
+          serviceSMS.notify("Hello via SMS!");
+      
+          return 0;
+      }
 
 ## 29. Static (Methods and Variables)
 - **Static Variables**: Shared among all class instances.
