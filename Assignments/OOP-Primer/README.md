@@ -482,11 +482,140 @@
 - **Generics**: Allow classes and methods to operate on types specified at runtime (e.g., Java Generics).
 - **Templates**: Similar to generics but used at compile time (e.g., C++ Templates).
 
+      #include <iostream>
+      
+      // Define a generic function using a template
+      template <typename T>
+      T findMax(T a, T b) {
+          return (a > b) ? a : b;
+      }
+      
+      int main() {
+          std::cout << "Max of 10 and 20: " << findMax(10, 20) << std::endl;  // Integers
+          std::cout << "Max of 3.14 and 2.71: " << findMax(3.14, 2.71) << std::endl; // Doubles
+          std::cout << "Max of 'A' and 'B': " << findMax('A', 'B') << std::endl; // Characters
+      
+          return 0;
+      }
+
 ## 16. Instance Variable
 - A variable tied to a specific instance of a class, holding unique values for each object.
 
+      #include <iostream>
+      #include <string>
+      
+      class Person {
+      private:
+          // Instance variables
+          std::string name;
+          int age;
+      
+      public:
+          // Constructor to initialize instance variables
+          Person(const std::string& n, int a) : name(n), age(a) {}
+      
+          // Getter for name
+          std::string getName() const {
+              return name;
+          }
+      
+          // Setter for name
+          void setName(const std::string& n) {
+              name = n;
+          }
+      
+          // Getter for age
+          int getAge() const {
+              return age;
+          }
+      
+          // Setter for age
+          void setAge(int a) {
+              age = a;
+          }
+      
+          // Method to display person details
+          void displayInfo() const {
+              std::cout << "Name: " << name << ", Age: " << age << std::endl;
+          }
+      };
+      
+      int main() {
+          // Create two instances of Person
+          Person person1("Alice", 30);
+          Person person2("Bob", 25);
+      
+          // Access and modify instance variables
+          person1.displayInfo();  // Name: Alice, Age: 30
+          person2.displayInfo();  // Name: Bob, Age: 25
+      
+          person1.setName("Alice Smith");
+          person1.setAge(31);
+      
+          // Display updated details
+          person1.displayInfo();  // Name: Alice Smith, Age: 31
+      
+          return 0;
+      }
+
 ## 17. Member Variable
 - Variables defined within a class and can be either instance or class variables.
+
+      #include <iostream>
+      #include <string>
+      
+      class Car {
+      private:
+          // Member variables (Instance variables)
+          std::string brand;
+          int year;
+      
+          // Static member variable (shared among all instances)
+          static int totalCars;
+      
+      public:
+          // Constructor to initialize member variables
+          Car(const std::string& b, int y) : brand(b), year(y) {
+              totalCars++; // Increment total cars count
+          }
+      
+          // Destructor to manage cleanup
+          ~Car() {
+              totalCars--; // Decrement total cars count
+          }
+      
+          // Getters for instance variables
+          std::string getBrand() const {
+              return brand;
+          }
+      
+          int getYear() const {
+              return year;
+          }
+      
+          // Static member function to access static variable
+          static int getTotalCars() {
+              return totalCars;
+          }
+      };
+      
+      // Initialize the static member variable
+      int Car::totalCars = 0;
+      
+      int main() {
+          // Create car objects
+          Car car1("Toyota", 2021);
+          Car car2("Ford", 2020);
+      
+          // Access instance variables using object methods
+          std::cout << "Car 1: " << car1.getBrand() << " (" << car1.getYear() << ")" << std::endl;
+          std::cout << "Car 2: " << car2.getBrand() << " (" << car2.getYear() << ")" << std::endl;
+      
+          // Access static member variable
+          std::cout << "Total cars: " << Car::getTotalCars() << std::endl;
+      
+          return 0;
+      }
 
 ## 18. Memory Management (Garbage Collection, Pointers)
 - **Garbage Collection**: Automatic memory management that reclaims unused objects.
