@@ -525,7 +525,12 @@
 - Refer to **Access Modifiers**.
 
 ## 29. SOLID Principles
-- **S**ingle Responsibility, **O**pen/Closed, **L**iskov Substitution, **I**nterface Segregation, **D**ependency Inversion: Principles for maintainable OOP design.
+Principles for maintainable OOP design.
+- **S**ingle Responsibility
+- **O**pen/Closed
+- **L**iskov Substitution
+- **I**nterface Segregation
+- **D**ependency Inversion
 
 ## 30. Static (Methods and Variables)
 - **Static Variables**: Shared among all class instances.
