@@ -618,17 +618,105 @@
       }
 
 ## 18. Memory Management (Garbage Collection, Pointers)
-- **Garbage Collection**: Automatic memory management that reclaims unused objects.
+- **Garbage Collection**: Automatic memory management that reclaims unused objects (must be manually implemented in C++)
 - **Pointers**: Variables that store memory addresses (commonly used in C++).
+
+      #include <iostream>
+      
+      class Car {
+      public:
+          std::string brand;
+          int year;
+      
+          // Constructor
+          Car(const std::string& b, int y) : brand(b), year(y) {
+              std::cout << "Car " << brand << " (" << year << ") created." << std::endl;
+          }
+      
+          // Destructor
+          ~Car() {
+              std::cout << "Car " << brand << " (" << year << ") destroyed." << std::endl;
+          }
+      };
+      
+      int main() {
+          // Dynamically allocate memory for a Car object
+          Car* carPtr = new Car("Toyota", 2021); // Allocates memory on the heap
+      
+          // Access the Car object using the pointer
+          std::cout << "Car brand: " << carPtr->brand << ", Year: " << carPtr->year << std::endl;
+      
+          // Deallocate the memory when done
+          delete carPtr;  // Frees the memory allocated by `new`
+      
+          // Note: After delete, `carPtr` is a dangling pointer. It's good practice to set it to nullptr.
+          carPtr = nullptr;
+      
+          return 0;
+      }
 
 ## 19. Method Overloading
 - Defining multiple methods in the same class with the same name but different parameters.
 
+      #include <iostream>
+      using namespace std;
+      
+      class Calculator {
+      public:
+          // Method to add two integers
+          int add(int a, int b) {
+              return a + b;
+          }
+      
+          // Overloaded method to add three integers
+          int add(int a, int b, int c) {
+              return a + b + c;
+          }
+      
+          // Overloaded method to add two doubles
+          double add(double a, double b) {
+              return a + b;
+          }
+      };
+      
+      int main() {
+          Calculator calc;
+      
+          // Calling the add method with two integers
+          cout << "Sum of 2 integers: " << calc.add(10, 20) << endl;
+      
+          // Calling the add method with three integers
+          cout << "Sum of 3 integers: " << calc.add(10, 20, 30) << endl;
+      
+          // Calling the add method with two doubles
+          cout << "Sum of 2 doubles: " << calc.add(10.5, 20.5) << endl;
+      
+          return 0;
+      }
+
 ## 20. Method
 - A function defined within a class that operates on the class's data.
 
+      #include <iostream>
+      using namespace std;
+      
+      class Calculator {
+      public:
+          // Method to add two integers
+          int add(int a, int b) {
+              return a + b;
+          }
+      
+          // Method to subtract two integers
+          int subtract(int a, int b) {
+              return a - b;
+          }
+      };
+
 ## 21. Multiple Inheritance
 - A class inheriting from more than one parent class, which can lead to complexity (e.g., the "diamond problem").
+
+<img src="https://github.com/user-attachments/assets/920947a0-0ad5-43f9-8b5f-a2c86ccbb2ea" width=550>
 
 ## 22. Multithreading in OOP
 - Using threads to execute multiple tasks concurrently, often handled with OOP principles for better modularity and synchronization.
@@ -643,6 +731,40 @@
 
 ## 25. Operator Overloading
 - Redefining the behavior of operators for user-defined types.
+
+      #include <iostream>
+      #include <cstdlib>
+      
+      void* operator new(size_t size) {
+          std::cout << "Custom new called! Allocating " << size << " bytes." << std::endl;
+          void* p = std::malloc(size);
+          if (!p) {
+              throw std::bad_alloc();  // If memory allocation fails
+          }
+          return p;
+      }
+      
+      void operator delete(void* p) noexcept {
+          std::cout << "Custom delete called!" << std::endl;
+          std::free(p);
+      }
+      
+      class MyClass {
+      public:
+          MyClass() {
+              std::cout << "MyClass constructor" << std::endl;
+          }
+          ~MyClass() {
+              std::cout << "MyClass destructor" << std::endl;
+          }
+      };
+      
+      int main() {
+          // Using custom new and delete
+          MyClass* obj = new MyClass();  // Calls overloaded new
+          delete obj;                    // Calls overloaded delete
+          return 0;
+      }
 
 ## 26. Overloading
 - Providing multiple methods with the same name but different parameters or types.
