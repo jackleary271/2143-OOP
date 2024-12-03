@@ -1198,7 +1198,40 @@ Principles for maintainable OOP design.
 
 ## 29. Static (Methods and Variables)
 - **Static Variables**: Shared among all class instances.
+
+      class MyClass {
+      public:
+          static int count;  // Static variable declaration
+          MyClass() {
+              count++;  // Incrementing the static variable in the constructor
+          }
+          static void displayCount() {
+              std::cout << "Count: " << count << std::endl;  // Accessing static variable inside a static method
+          }
+      };
+      
+      // Static variable definition outside the class
+      int MyClass::count = 0;  // Initialization of the static variable
+      
+      int main() {
+          MyClass obj1, obj2, obj3;
+          MyClass::displayCount();  // Access static variable via class name
+          return 0;
+      }
+
 - **Static Methods**: Methods that belong to the class rather than any instance.
+
+      class MyClass {
+      public:
+          static void showMessage() {
+              std::cout << "This is a static method." << std::endl;
+          }
+      };
+      
+      int main() {
+          MyClass::showMessage();  // Accessing the static method via the class name
+          return 0;
+      }
 
 ## 30. Testing in OOP
 - **Unit Testing**: Testing individual components of code.
@@ -1207,5 +1240,37 @@ Principles for maintainable OOP design.
 ## 31. UML Diagrams and Modeling
 - Unified Modeling Language diagrams like class, sequence, and activity diagrams to design and visualize OOP systems.
 
+![image](https://github.com/user-attachments/assets/2c3ef655-1bf6-4b23-bb1c-2307d905ce98)
+
+
 ## 32. Virtual
 - A keyword in languages like C++ to enable method overriding in derived classes, supporting runtime polymorphism.
+
+      #include <iostream>
+      
+      class Base {
+      public:
+          virtual void show() {  // Virtual function
+              std::cout << "Base class show function" << std::endl;
+          }
+          virtual ~Base() {}  // Virtual destructor (important for correct cleanup)
+      };
+      
+      class Derived : public Base {
+      public:
+          void show() override {  // Overriding virtual function
+              std::cout << "Derived class show function" << std::endl;
+          }
+      };
+      
+      int main() {
+          Base* basePtr;
+          Derived derivedObj;
+      
+          basePtr = &derivedObj;
+      
+          // Virtual function call (dynamic dispatch)
+          basePtr->show();  // This will call Derived's show() function, not Base's
+      
+          return 0;
+      }
