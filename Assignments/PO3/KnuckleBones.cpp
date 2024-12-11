@@ -634,11 +634,12 @@ sf::RectangleShape Grid::get_cell(int row, int col) const {
  *      - void
  *          - This function does not return anything, but continuously updates the window with the game state.
  */
-
 void Game(sf::RenderWindow& window) {
+    // Create a Dice object for dice animation with frame duration
     Dice diceAnimation(50);
-    diceAnimation.loadFrames("images", 1, 24);
+    diceAnimation.loadFrames("images", 1, 24);  // Load dice animation frames
 
+    // Initialize grid parameters
     const int rows = 3;
     const int cols = 3;
     const float cellSize = 100.f;
@@ -647,58 +648,73 @@ void Game(sf::RenderWindow& window) {
     const float gridStartY = 100.f;
     const float gridStartX2 = gridStartX1 + (cols * (cellSize + cellSpacing)) + 100.f;
 
+    // Create two grids for the game
     Grid grid1(rows, cols, cellSize, cellSpacing, gridStartX1, gridStartY);
     Grid grid2(rows, cols, cellSize, cellSpacing, gridStartX2, gridStartY);
 
+    // Initialize dice and animations for both grids
     std::vector<std::vector<sf::Sprite>> diceSprites1(rows, std::vector<sf::Sprite>(cols));
     std::vector<std::vector<sf::Sprite>> diceSprites2(rows, std::vector<sf::Sprite>(cols));
     std::vector<std::vector<Dice>> diceAnimations1(rows, std::vector<Dice>(cols));
     std::vector<std::vector<Dice>> diceAnimations2(rows, std::vector<Dice>(cols));
 
-    // Load font
+    // Load font for player labels
     sf::Font font;
-    if (!font.loadFromFile("resources/arial.ttf")) {
+    if (!font.loadFromFile("arial.ttf")) {
         std::cerr << "Error loading font!" << std::endl;
         return;
     }
 
+    // Initialize players with their respective labels and positions
     Player player1("Player 1", font);
     player1.setLabelPosition(150.f, 450.f); // Position below grid 1
 
     Player player2("Player 2", font);
     player2.setLabelPosition(750.f, 450.f); // Position below grid 2
 
+    // Variables for tracking selected cells
     bool cellSelected = false;
     sf::Vector2i selectedCell(-1, -1);
 
+    // Main game loop
     while (window.isOpen()) {
         sf::Event event;
+        
+        // Poll events
         while (window.pollEvent(event)) {
+            // Handle window close event
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
 
+            // Handle mouse click events
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                // Check if dice are rolling to prevent interactions
                 if (!diceAnimation.isDiceRolling()) {
                     for (int row = 0; row < rows; ++row) {
                         for (int col = 0; col < cols; ++col) {
+                            // Get cells from both grids
                             sf::RectangleShape cell1 = grid1.get_cell(row, col);
                             sf::RectangleShape cell2 = grid2.get_cell(row, col);
 
+                            // Check if the mouse click is within cell bounds for grid 1
                             if (cell1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                                 selectedCell = sf::Vector2i(col, row);
                                 cellSelected = true;
 
+                                // Initialize and roll dice for the selected cell in grid 1
                                 diceSprites1[selectedCell.y][selectedCell.x] = sf::Sprite();
                                 diceAnimations1[selectedCell.y][selectedCell.x] = Dice(50);
                                 diceAnimations1[selectedCell.y][selectedCell.x].loadFrames("images", 1, 24);
                                 diceAnimations1[selectedCell.y][selectedCell.x].roll();
                             }
 
+                            // Check if the mouse click is within cell bounds for grid 2
                             if (cell2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
                                 selectedCell = sf::Vector2i(col, row);
                                 cellSelected = true;
 
+                                // Initialize and roll dice for the selected cell in grid 2
                                 diceSprites2[selectedCell.y][selectedCell.x] = sf::Sprite();
                                 diceAnimations2[selectedCell.y][selectedCell.x] = Dice(50);
                                 diceAnimations2[selectedCell.y][selectedCell.x].loadFrames("images", 1, 24);
@@ -710,39 +726,48 @@ void Game(sf::RenderWindow& window) {
             }
         }
 
-        // Update dice animation for grid 1 and 2
+        // Update dice animations for both grids
         for (int row = 0; row < rows; ++row) {
             for (int col = 0; col < cols; ++col) {
+                // Update dice animation for grid 1
                 if (diceAnimations1[row][col].isDiceRolling()) {
                     diceAnimations1[row][col].update(diceSprites1[row][col]);
                 }
+                // Update dice animation for grid 2
                 if (diceAnimations2[row][col].isDiceRolling()) {
                     diceAnimations2[row][col].update(diceSprites2[row][col]);
                 }
             }
         }
 
-        // Update the position of dice sprites
+        // Set dice sprite positions to match the grid cells
         for (int row = 0; row < rows; ++row) {
             for (int col = 0; col < cols; ++col) {
+                // Align dice sprite for grid 1
                 if (diceSprites1[row][col].getTexture() && diceSprites1[row][col].getTextureRect().width) {
                     sf::RectangleShape cell1 = grid1.get_cell(row, col);
-                    diceSprites1[row][col].setPosition(cell1.getPosition().x + (cellSize - diceSprites1[row][col].getGlobalBounds().width) / 2,
-                        cell1.getPosition().y + (cellSize - diceSprites1[row][col].getGlobalBounds().height) / 2);
+                    diceSprites1[row][col].setPosition(
+                        cell1.getPosition().x + (cellSize - diceSprites1[row][col].getGlobalBounds().width) / 2,
+                        cell1.getPosition().y + (cellSize - diceSprites1[row][col].getGlobalBounds().height) / 2
+                    );
                 }
 
+                // Align dice sprite for grid 2
                 if (diceSprites2[row][col].getTexture() && diceSprites2[row][col].getTextureRect().width) {
                     sf::RectangleShape cell2 = grid2.get_cell(row, col);
-                    diceSprites2[row][col].setPosition(cell2.getPosition().x + (cellSize - diceSprites2[row][col].getGlobalBounds().width) / 2,
-                        cell2.getPosition().y + (cellSize - diceSprites2[row][col].getGlobalBounds().height) / 2);
+                    diceSprites2[row][col].setPosition(
+                        cell2.getPosition().x + (cellSize - diceSprites2[row][col].getGlobalBounds().width) / 2,
+                        cell2.getPosition().y + (cellSize - diceSprites2[row][col].getGlobalBounds().height) / 2
+                    );
                 }
             }
         }
 
+        // Render updates
         window.clear();
 
-        grid1.draw(window);
-        grid2.draw(window);
+        grid1.draw(window);  // Draw grid 1
+        grid2.draw(window);  // Draw grid 2
 
         // Draw dice sprites for both grids
         for (int row = 0; row < rows; ++row) {
@@ -759,6 +784,7 @@ void Game(sf::RenderWindow& window) {
         window.display();
     }
 }
+
 
 /**
 * Public : main
