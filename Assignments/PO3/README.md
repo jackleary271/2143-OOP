@@ -7,6 +7,8 @@ I was unable to fully complete the project, but I was able to create a dice roll
 
 I was working on the ability for the program to store dice values as score for the game, but was unable to ever get that to work. Thus, this is all I have. 
 
+Note: This was made on visual studio.
+
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
 |   1   | [KnuckleBones.cpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO3/KnuckleBones.cpp)       | driver program for user interaction and operations |
