@@ -620,19 +620,22 @@ sf::RectangleShape Grid::get_cell(int row, int col) const {
 }
 
 /**
- * Public: Game
+ * Public : Game
  *
  * Description:
- *      Initializes and runs the game window where two players roll dice on two separate grids.
- *      Handles user input, dice animation, and the rendering of game elements including grids and player labels.
+ *      Initializes and runs the game loop for a two-player dice game. The game 
+ *      involves two grids where each player can roll dice in the cells, with dice 
+ *      animations and player labels being updated and drawn on the screen.
  *
  * Params:
- *      - window: sf::RenderWindow&
- *          - The window to render the game onto.
+ *      - sf::RenderWindow& window
+ *          - The window to render the game visuals to.
  *
  * Returns:
- *      - void: This function does not return any value.
+ *      - void
+ *          - This function does not return anything, but continuously updates the window with the game state.
  */
+
 void Game(sf::RenderWindow& window) {
     Dice diceAnimation(50);
     diceAnimation.loadFrames("images", 1, 24);
