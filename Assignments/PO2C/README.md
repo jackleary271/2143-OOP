@@ -7,7 +7,7 @@ This is the work I made on my Knucklebones game while using Ncurses.
 
 |   #   | File            | Description                                        |
 | :---: | --------------- | -------------------------------------------------- |
-|   1   | [main.cpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO1/main.cpp)        | driver program for user interaction and operations |
+|   1   | [main.cpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO2C/main.cpp)       | driver program for user interaction and operations |
 |   2   | [buttonClass.hpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO2C/buttonClass.hpp)    | implementation of the interactive button for the game |
 |   3   | [colors.hpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO2C/colors.hpp)      | implementation of the colors provided by Ncurses |
 |   4   | [diceClass.hpp](https://github.com/jackleary271/2143-OOP/blob/main/Assignments/PO2C/diceClass.hpp)  | implementation of the ability to roll a die for the game |
