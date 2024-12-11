@@ -8,3 +8,4 @@
 |  PO2A | [Project 2A](https://github.com/jackleary271/2143-OOP/tree/main/Assignments/PO2A)  | Ncurses Test |
 |  PO2B | [Project 2B](https://github.com/jackleary271/2143-OOP/tree/main/Assignments/PO2B)  | Knucklebones Class Outline |
 |  PO2C | [Project 2C](https://github.com/jackleary271/2143-OOP/tree/main/Assignments/PO2C)  | Knucklebones Ncurses |
+|  PO3  | [Project 3](https://github.com/jackleary271/2143-OOP/tree/main/Assignments/PO3)    | Knucklebones SFML |
