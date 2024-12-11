@@ -1,4 +1,4 @@
-## PO2B - Knucklebones Ncurses Work
+## PO2B - Knucklebones Ncurses Progress
 ### Jack Leary
 ### Description:
 This is the work I made on my Knucklebones game while using Ncurses.
