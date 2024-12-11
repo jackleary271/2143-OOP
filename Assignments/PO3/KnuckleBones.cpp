@@ -12,9 +12,8 @@
 *        added to their score. The program uses SFML for graphics and animation.
 *
 *  Usage:
-*        - Compile and run the program.
-*        - Follow on-screen instructions to interact with the dice-rolling
-*          animation and track player scores.
+*        - Compile and run the program (if on visual studio)
+*        - Run this command if on linux: g++ -o knucklebones KnuckleBones.cpp
 *
 *  Files:
 *        main.cpp         : Driver program
