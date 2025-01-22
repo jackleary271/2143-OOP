@@ -7,4 +7,4 @@
 #### School Email: jeleary0604@my.msutexas.edu
 
 #### Image: 
-<img src="https://github.com/user-attachments/assets/9794ff56-e64c-4b45-8692-6922c1df876f" width="200">
+<img src="https://github.com/user-attachments/assets/9e44d65f-95e6-41ec-954d-c7e777c9a224" width="200">
